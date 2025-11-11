@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ניהול מוצרים – חדר 6</title>
+<style>
+body {
+  font-family: "Heebo", sans-serif;
+  background: #f7fff5;
+  margin: 0;
+  padding: 20px;
+  direction: rtl;
+  text-align: center;
+}
+h2 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 14px;
+}
+.card h3 {
+  margin-top: 0;
+  color: #1b5e20;
+}
+input[type="text"] {
+  width: 120px;
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+label {
+  display: block;
+  margin-top: 6px;
+  font-size: 15px;
+}
+button.saveBtn {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: #43a047;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+button.saveBtn:hover {
+  background: #2e7d32;
+  transform: scale(1.05);
+}
+#refreshBtn {
+  margin-bottom: 20px;
+  background: #00796b;
+}
+#refreshBtn:hover {
+  background: #004d40;
+}
+
+#backBtn {
+  position: relative;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #43a047, #66bb6a);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: 0.2s;
+}
+
+#backBtn:hover {
+  background: linear-gradient(to right, #2e7d32, #388e3c);
+  transform: scale(1.05);
+}
+
+</style>
+</head>
+<body>
+<button id="backBtn">⬅ חזרה לחנות</button>
+<h2>ניהול מלאי ומחירים – חדר 6</h2>
+<button id="refreshBtn">🔄 רענן נתונים</button>
+<div class="container" id="manageContainer"></div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const supabaseUrl = 'https://tgfqsmarvznpzwdixvye.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRnZnFzbWFydnpucHp3ZGl4dnllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA3OTM1NzEsImV4cCI6MjA3NjM2OTU3MX0.ui5rHWh8KgSmhYrl_unozb9rwAaZQeTNEeMZF63lhYM';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+console.log("🚀 Supabase client initiated");
+document.getElementById("backBtn").onclick = () => {
+  window.location.href = "index.html";
+};
+// פונקציה שטוענת מוצרים מהטבלה
+async function loadProducts() {
+  console.log("📦 Loading products...");
+  const { data, error } = await supabase
+    .from('products_room6')
+    .select('*')
+    .order('id');
+
+  if (error) {
+    console.error("❌ Supabase select error:", error);
+    alert("שגיאה בטעינת מוצרים");
+    return;
+  }
+
+  console.log(`✅ Loaded ${data.length} products from Supabase`);
+
+  const container = document.getElementById('manageContainer');
+  if (!container) {
+    console.error("⚠️ Missing #manageContainer in HTML!");
+    return;
+  }
+
+  container.innerHTML = '';
+
+  // יצירת כרטיס לכל מוצר
+  data.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${p.name}</h3>
+<label>מחיר: <input id="price_${p.id}" type="text" value="${(p.price || '').replace(/ש"?$/, 'ש"ח')}"></label>
+      <label>תוספת: <input id="note_${p.id}" type="text" value="${p.note || ''}"></label>
+      <label><input id="out_${p.id}" type="checkbox" ${p.out_of_stock ? 'checked' : ''}> אין במלאי</label>
+      <button class="saveBtn">💾 שמור</button>
+    `;
+
+    // לחיצה על כפתור שמירה
+    card.querySelector('.saveBtn').onclick = async () => {
+      const price = document.getElementById(`price_${p.id}`).value.trim();
+      const note = document.getElementById(`note_${p.id}`).value.trim();
+      const out_of_stock = document.getElementById(`out_${p.id}`).checked;
+
+      console.log(`📝 Updating: ${p.name}`, { price, note, out_of_stock });
+
+      const { data: updateData, error: updateError } = await supabase
+        .from('products_room6')
+        .update({ price, note, out_of_stock })
+        .eq('id', p.id)
+        .select();
+
+      console.log('Update result:', updateData, updateError);
+
+      if (updateError) {
+        console.error("❌ Update error:", updateError);
+        alert("שגיאה בעדכון המוצר");
+      } else if (updateData.length > 0) {
+        console.log(`✅ ${p.name} updated successfully`);
+        alert(`✅ ${p.name} עודכן בהצלחה`);
+      } else {
+        console.warn("⚠️ לא בוצע עדכון – כנראה שלא נמצאה שורה מתאימה");
+      }
+    };
+
+    container.appendChild(card);
+  });
+}
+
+loadProducts();
+</script>
+
+
+</body>
+</html>

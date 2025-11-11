@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מכירת מוצרים של נצח חדר 6</title>
+  <style>
+    body {
+      font-family: "Heebo", sans-serif;
+      background: linear-gradient(135deg, #f1f8e9, #e8f5e9);
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+
+    /* סרגל עליון */
+    .navbar {
+background-color: #e7e9e7;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 18px;
+      font-size: 22px;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* גריד כללי */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      padding: 20px;
+      justify-items: center;
+    }
+
+    /* כרטיס מוצר */
+    .card {
+      width: 160px;
+      height: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .card img {
+      width: 100%;
+      height: 70%;
+      object-fit: cover;
+      object-position: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .card-content {
+      padding: 6px;
+    }
+
+    .card-content h3 {
+      margin: 0;
+      font-size: 17px;
+      color: #2e7d32;
+    }
+
+    .card-content p {
+      margin: 2px 0;
+      font-size: 17px;
+      color: #333333;
+margin: 10px 10px;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+      }
+      .card img {
+        height: 180px;
+      }
+    }
+strong{
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: #000000;
+    margin: 0 auto 0;
+    padding: 3px 3px;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="navbar"> מלאי – חדר 6</div>
+
+  <div class="container">
+   <div class="card">
+    <img src="images/slgihsfh.WEBP" alt="גרעיני חמניה קרעץ">
+    <div class="card-content">
+      <h3>גרעינים שחורים</h3>
+      <p>300 גרם</p>
+      <p><strong>18 ש"ח</strong></p>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="images/fjffyjgyj.WEBP" alt="גומי בקבוק קולה מסוכר">
+    <div class="card-content">
+      <h3>גומי בקבוק קולה מסוכר</h3>
+      <p>300 גרם</p>
+      <p><strong>18 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/hfjhjghkguk.PNG" alt="פתית קולה">
+    <div class="card-content">
+      <h3>פחית קולה</h3>
+      <p>330 מ"ל</p>
+      <p><strong>5 ש"ח (לא קר)</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/ljdnjgnd.WEBP" alt="חטיף ביסלי בטעם גריל">
+    <div class="card-content">
+      <h3>חטיף ביסלי בטעם גריל</h3>
+      <p>35 גרם</p>
+      <p><strong>4 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/dhdghfgh.WEBP" alt="חטיף במבה קלאסית">
+    <div class="card-content">
+      <h3>חטיף במבה קלאסית</h3>
+      <p>80 גרם</p>
+      <p><strong>7 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/hfjfy.WEBP" alt="חטיף ביסלי מיקס בצל">
+    <div class="card-content">
+      <h3>חטיף ביסלי מיקס בצל</h3>
+      <p>70 גרם</p>
+      <p><strong>8 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/dfhghgfhg.WEBP" alt="גומי אבטיחים">
+    <div class="card-content">
+      <h3>גומי אבטיחים</h3>
+      <p>30 גרם</p>
+      <p><strong>20 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/dhdhdffdh.WEBP" alt="חמצוצים בטעם קולה">
+    <div class="card-content">
+      <h3>חמצוצים בטעם קולה</h3>
+      <p>50 גרם</p>
+      <p><strong>10 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/dfhhfghcg.WEBP" alt="לוקיטוס שטיחים חמוצים פירות">
+    <div class="card-content">
+      <h3>לוקיטוס שטיחים חמוצים פירות</h3>
+      <p>180 גרם</p>
+      <p><strong>16 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/fgdhfghg.WEBP" alt="שטיחים חמוצים תותי פרוטי">
+    <div class="card-content">
+      <h3>שטיחים חמוצים תותי פרוטי</h3>
+      <p>180 גרם</p>
+      <p><strong>16 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/fghfftjgf.WEBP" alt="מרס סניקרס טוויקס באונטי מילקי ווי">
+    <div class="card-content">
+      <h3>מרס / סניקרס / טוויקס / באונטי / מילקי ווי</h3>
+      <p>יחידה</p>
+      <p><strong>4 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/nvcnbdlinkb.jpg" alt="קפסולה אספרסו">
+    <div class="card-content">
+      <h3>קפסולה אספרסו דרגות חוזק 9-11-12</h3>
+      <p><strong>2 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/hfgjghjg.jpg" alt="קינדר בואנו">
+    <div class="card-content">
+      <h3>קינדר בואנו</h3>
+      <p><strong>9 ש"ח</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/gftfjfjf.jpg" alt="קפה טורקי">
+    <div class="card-content">
+      <h3>קפה טורקי מנה ליחיד</h3>
+      <p>7 גרם</p>
+      <p><strong>2 ש"ח</strong></p>
+    </div>
+  </div>
+    </div>
+  </div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const supabaseUrl = 'https://tgfqsmarvznpzwdixvye.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRnZnFzbWFydnpucHp3ZGl4dnllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA3OTM1NzEsImV4cCI6MjA3NjM2OTU3MX0.ui5rHWh8KgSmhYrl_unozb9rwAaZQeTNEeMZF63lhYM';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// מעלה נתוני מוצרים פעם אחת אם אין רשומות
+async function uploadProductsIfEmpty() {
+  const { data, error } = await supabase.from('products_room6').select('id');
+  if (error) return console.error(error);
+  if (data.length > 0) return; // כבר קיימים מוצרים
+
+  const cards = document.querySelectorAll('.card');
+  const products = Array.from(cards).map(card => {
+    const name = card.querySelector('h3').textContent.trim();
+    const weight = card.querySelector('p').textContent.trim();
+    const strong = card.querySelector('strong').textContent.trim();
+    const [pricePart, notePart] = strong.split(/\s*\(/);
+    const price = pricePart.trim();
+    const note = notePart ? notePart.replace(')', '') : '';
+    const img = card.querySelector('img').getAttribute('src');
+    return { name, weight, price, note, image_url: img, out_of_stock: false };
+  });
+
+  const { error: insertError } = await supabase
+    .from('products_room6')
+    .insert(products);
+
+  if (insertError) console.error('Insert error:', insertError);
+  else console.log(`✅ נוספו ${products.length} מוצרים לטבלה`);
+}
+
+// טוען מוצרים ומעדכן מחירים מהשרת
+async function loadProducts() {
+  const { data, error } = await supabase.from('products_room6').select('*');
+  if (error) return console.error(error);
+
+  document.querySelectorAll('.card').forEach(card => {
+    const name = card.querySelector('h3').textContent.trim();
+    const found = data.find(p => p.name === name);
+    if (found) {
+      const strong = card.querySelector('strong');
+      strong.textContent = found.price + (found.note ? ' ' + found.note : '');
+      if (found.out_of_stock) addOutOfStockBanner(card);
+    }
+  });
+}
+
+function addOutOfStockBanner(card) {
+  if (!card.querySelector(".out-banner")) {
+    const banner = document.createElement("div");
+    banner.className = "out-banner";
+    banner.textContent = "אזל זמנית המלאי!";
+
+    // הבאנר יוצמד באמצע
+    card.style.position = "relative";
+    Object.assign(banner.style, {
+      position: "absolute",
+      top: "40%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      background: "rgba(0, 0, 0, 0.75)",
+      color: "#fff",
+      padding: "12px 20px",
+      borderRadius: "10px",
+      boxShadow: "0 4px 14px rgba(0, 0, 0, 0.6)",
+      fontWeight: "bold",
+      fontSize: "20px",
+      textAlign: "center",
+      zIndex: "10",
+      backdropFilter: "blur(4px)"
+    });
+
+    card.appendChild(banner);
+  }
+}
+
+
+// קיצור מקשים לניהול
+document.addEventListener("keydown", (e) => {
+  if (e.shiftKey && e.code === "Digit1") {
+    window.location.href = "manage.html";
+  }
+});
+
+// פעולה ראשית
+await uploadProductsIfEmpty();
+await loadProducts();
+
+</script>
+
+</body>
+</html>
