@@ -99,12 +99,26 @@ strong{
     padding: 3px 3px;
 }
 
+.p123 {
+  padding: 15px 19px;
+  border-radius: 18px;
+  color: #000000;
+  font-weight: 600;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(61, 71, 214, 0.3);
+  backdrop-filter: blur(4px);
+  transition: all 0.25s ease;
+  text-align: center;
+  display: inline-block;
+  font-weight: bolder;
+}
+
 
 
   </style>
 </head>
 <body>
-  <div class="navbar"> מלאי – חדר 6</div>
+  <div class="navbar"> <gg class="p123">מלאי – חדר 6</gg></div>
 
   <div class="container">
    <div class="card">
@@ -127,7 +141,7 @@ strong{
   </div>
 
   <div class="card">
-    <img src="images/hfjhjghkguk.PNG" alt="פתית קולה">
+    <img src="images/hfjhjghkguk.jpg" alt="פתית קולה">
     <div class="card-content">
       <h3>פחית קולה</h3>
       <p>330 מ"ל</p>
@@ -293,7 +307,7 @@ function addOutOfStockBanner(card) {
     card.style.position = "relative";
     Object.assign(banner.style, {
       position: "absolute",
-      top: "40%",
+      top: "30%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       background: "rgba(0, 0, 0, 0.75)",
